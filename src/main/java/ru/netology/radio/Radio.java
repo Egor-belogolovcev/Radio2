@@ -1,19 +1,28 @@
 package ru.netology.radio;
 
 public class Radio {
-    private int currentVolume=5;
-    private int maxVolume=10;
-    private int minVolume=0;
-    private int maxStation=9;
-    private int minStation=0;
-    private int currentStation=2;
+    private int currentVolume = 5;
+    private int maxVolume = 10;
+    private int minVolume = 0;
+    private int maxStation;
+    private int minStation = 0;
+    private int currentStation = 2;
 
+    public Radio() {
+        this.maxStation = 9;
+    }
+
+    public  Radio(int stationCount) {
+        this.maxStation = stationCount - 1;
+    }
     public int getCurrentVolume() { //получаем текущую громкость
         return currentVolume;
     }
+
     protected void setMaxVolume() { //Разрешаем устанавливать максимальную громкость для тестов
         currentVolume = maxVolume;
     }
+
     protected void setMinVolume() { //Разрешаем устанавливать минимальную громкость для тестов
         currentVolume = minVolume;
     }
@@ -50,10 +59,12 @@ public class Radio {
     public void setMaxStation() { // Устанавливаем минимальную станцию для тестов
         currentStation = maxStation;
     }
-        public int getCurrentStation () {
-            return currentStation;
-        }
-    public void setCurrentStation ( int currentStation){ //разрешаем устанавливать программы в диапазоне 0-9 для тестов
+
+    public int getCurrentStation() {
+        return currentStation;
+    }
+
+    public void setCurrentStation(int currentStation) { //разрешаем устанавливать программы в диапазоне 0-9 для тестов
         if (currentStation < minStation) {
             return;
         }
@@ -62,19 +73,20 @@ public class Radio {
         }
         this.currentStation = currentStation;
     }
-        public void nextStation () { //изменение программы на следующую
-            if (currentStation < maxStation) {
-                currentStation++;
-            } else {
-                currentStation = minStation;
-            }
-        }
 
-        public void prevStation () { //изменение программы на предудущую
-            if (currentStation > minStation) {
-                currentStation--;
-            } else {
-                currentStation = maxStation;
-            }
+    public void nextStation() { //изменение программы на следующую
+        if (currentStation < maxStation) {
+            currentStation++;
+        } else {
+            currentStation = minStation;
         }
     }
+
+    public void prevStation() { //изменение программы на предудущую
+        if (currentStation > minStation) {
+            currentStation--;
+        } else {
+            currentStation = maxStation;
+        }
+    }
+}
